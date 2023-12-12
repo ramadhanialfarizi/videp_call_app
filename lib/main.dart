@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_call_app/screen/homescreen.dart';
+import 'package:video_call_app/features/home/view/homescreen.dart';
 
 void main() {
   runApp(const MyApp());
