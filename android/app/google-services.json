@@ -12,7 +12,12 @@
           "package_name": "com.example.video_call_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "723587547036-tf65dbdglklpotr46c7g5lgv0lpg7ab0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBtjQTPlqGzK2EAQ_OxHhJHTNLBtpikXXU"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723587547036-tf65dbdglklpotr46c7g5lgv0lpg7ab0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "723587547036-n93h612gqfm3o0f8b9st8sh4phhahi84.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.videoCallApp"
+              }
+            }
+          ]
         }
       }
     }

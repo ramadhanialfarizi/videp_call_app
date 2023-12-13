@@ -28,7 +28,9 @@ class LoginScreen extends StatelessWidget {
                 const EdgeInsets.all(16.0),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              _controller.signInWithGoogle(context);
+            },
             icon: Image.asset(
               ImagesConstants.googleIcon,
               scale: 100,
