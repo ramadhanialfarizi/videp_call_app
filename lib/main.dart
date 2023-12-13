@@ -2,7 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_call_app/features/home/view/homescreen.dart';
-import 'package:video_call_app/features/onboarding/SplashScreen/SplashScreen.dart';
+import 'package:video_call_app/features/onboarding/Login/view/loginScreen.dart';
+import 'package:video_call_app/features/onboarding/SplashScreen/view/SplashScreen.dart';
 import 'package:video_call_app/firebase_options.dart';
 
 void main() async {
@@ -45,7 +46,10 @@ class MyApp extends StatelessWidget {
           case '/splashscreen':
             return CupertinoPageRoute(
                 builder: (_) => const SplashScreen(), settings: settings);
-          case '/home':
+          case '/loginScreen':
+            return CupertinoPageRoute(
+                builder: (_) => const LoginScreen(), settings: settings);
+          case '/homeScreen':
             return CupertinoPageRoute(
                 builder: (_) => const HomeScreen(), settings: settings);
         }

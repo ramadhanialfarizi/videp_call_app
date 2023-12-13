@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   splashScreenStart() async {
     var duration = const Duration(seconds: 10);
     return Timer(duration, () {
-      Navigator.of(context).pushReplacementNamed('/home');
+      Navigator.of(context).pushReplacementNamed('/loginScreen');
       // if (userLogin.currentUser == null) {
       // } else {
       //   Navigator.of(context).pushReplacementNamed('/home');
