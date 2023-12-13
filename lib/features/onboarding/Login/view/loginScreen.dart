@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:video_call_app/core/utils/ImagesConstants.dart';
+import 'package:video_call_app/features/onboarding/Login/controller/loginSreenController.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var _controller = Get.put(LoginScreenController());
     return Scaffold(
         body: Center(
       child: Column(
@@ -30,7 +33,7 @@ class LoginScreen extends StatelessWidget {
               ImagesConstants.googleIcon,
               scale: 100,
             ),
-            label: Text("Login with Google"),
+            label: const Text("Login with Google"),
           ),
         ],
       ),

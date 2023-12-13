@@ -38,6 +38,7 @@ dependencies:
   zego_uikit_prebuilt_call: ^3.10.4
   firebase_core: ^2.24.2
   get: ^4.6.6
+  google_sign_in: ^6.2.0
   # gif: ^2.3.0
   
 
