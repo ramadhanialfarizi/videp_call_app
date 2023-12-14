@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_call_app/features/call/view/callScreen.dart';
+import 'package:video_call_app/features/home/view/widget/sidebar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.black,
+      drawer: const Sidebar(),
       appBar: AppBar(
         title: const Text('Video Call App'),
         centerTitle: true,

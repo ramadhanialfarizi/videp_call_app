@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:video_call_app/core/helpers/authHelpers.dart';
 import 'package:video_call_app/core/utils/ImagesConstants.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,6 +13,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final AuthHelpers authHelpers = AuthHelpers();
+
   @override
   void initState() {
     super.initState();
@@ -18,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   splashScreenStart() async {
-    var duration = const Duration(seconds: 10);
+    var duration = const Duration(seconds: 5);
     return Timer(duration, () {
-      Navigator.of(context).pushReplacementNamed('/loginScreen');
-      // if (userLogin.currentUser == null) {
-      // } else {
-      //   Navigator.of(context).pushReplacementNamed('/home');
-      // }
+      if (authHelpers.userLogin.currentUser == null) {
+        Navigator.of(context).pushReplacementNamed('/loginScreen');
+      } else {
+        Navigator.of(context).pushReplacementNamed('/homeScreen');
+      }
 
       //Navigator.of(context).pushReplacementNamed('/login');
     });
