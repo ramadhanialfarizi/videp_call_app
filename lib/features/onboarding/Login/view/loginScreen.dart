@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                ImagesConstants.appIcon,
+                ImagesConstants.loginBg,
                 scale: 3,
               ),
               const SizedBox(
