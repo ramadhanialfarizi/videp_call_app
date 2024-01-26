@@ -32,7 +32,7 @@ class MeetingForm extends StatelessWidget {
           TextFormField(
             controller: textEditingController,
             decoration: InputDecoration(
-              hintText: 'Meeting code',
+              hintText: 'Input code',
               filled: true,
               fillColor: Colors.grey[200],
               border: OutlineInputBorder(
