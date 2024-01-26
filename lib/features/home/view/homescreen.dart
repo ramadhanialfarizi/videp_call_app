@@ -65,8 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
       ),
-      body:
-          _controller.widgetOptions.elementAt(_controller.selectedWidget.value),
+      body: Obx(() => _controller.widgetOptions
+          .elementAt(_controller.selectedWidget.value)),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
           items: const [
@@ -75,8 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.watch_later_outlined),
-              label: 'History',
+              icon: Icon(Icons.photo_camera_front),
+              label: 'Meeting',
             ),
           ],
           currentIndex: _controller.selectedWidget.value,

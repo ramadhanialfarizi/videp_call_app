@@ -15,4 +15,5 @@ class ImagesConstants {
 
   // BACKGROUND
   static const String loginBg = '${_background}login_bg.png';
+  static const String sidebarBg = '${_background}side_bar_bg.png';
 }
