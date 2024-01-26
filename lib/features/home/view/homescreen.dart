@@ -58,76 +58,80 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: callIdController,
-                    decoration: const InputDecoration(
-                      hintText: 'input call id',
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '* please input call id';
-                      }
+            child: formCall(),
+          ),
+        ),
+      ),
+    );
+  }
 
-                      return null;
-                    },
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    controller: userIdController,
-                    decoration: const InputDecoration(
-                      hintText: 'input user id',
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '* please input user id';
-                      }
+  Widget formCall() {
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            controller: callIdController,
+            decoration: const InputDecoration(
+              hintText: 'input call id',
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return '* please input call id';
+              }
 
-                      return null;
-                    },
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    controller: userNameController,
-                    decoration: const InputDecoration(
-                      hintText: 'input username',
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '* please input username';
-                      }
+              return null;
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          TextFormField(
+            controller: userIdController,
+            decoration: const InputDecoration(
+              hintText: 'input user id',
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return '* please input user id';
+              }
 
-                      return null;
-                    },
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: toCallScreen,
-                      child: const Text(
-                        'Join call',
-                      ),
-                    ),
-                  ),
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  // const ShareButton(),
-                ],
+              return null;
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          TextFormField(
+            controller: userNameController,
+            decoration: const InputDecoration(
+              hintText: 'input username',
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return '* please input username';
+              }
+
+              return null;
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: toCallScreen,
+              child: const Text(
+                'Join call',
               ),
             ),
           ),
-        ),
+          // SizedBox(
+          //   height: 20,
+          // ),
+          // const ShareButton(),
+        ],
       ),
     );
   }
