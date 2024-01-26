@@ -17,27 +17,26 @@ class CallScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ZegoUIKitPrebuiltCall(
-      appID:
-          zegoCloudAppID, // Fill in the appID that you get from ZEGOCLOUD Admin Console.
-      appSign:
-          zegoCloudAppSign, // Fill in the appSign that you get from ZEGOCLOUD Admin Console.
-      userID: userID,
-      userName: userName,
-      callID: callUID,
-      // You can also use groupVideo/groupVoice/oneOnOneVoice to make more types of calls.
-      config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
-        ..layout = ZegoLayout.gallery()
-        ..bottomMenuBarConfig = ZegoBottomMenuBarConfig(extendButtons: [
-          const ShareButton(),
-        ], buttons: [
-          ZegoMenuBarButtonName.toggleCameraButton,
-          ZegoMenuBarButtonName.toggleMicrophoneButton,
-          ZegoMenuBarButtonName.hangUpButton,
-          ZegoMenuBarButtonName.switchAudioOutputButton,
-          ZegoMenuBarButtonName.switchCameraButton,
-          ZegoMenuBarButtonName.showMemberListButton
-        ])
-        ..onOnlySelfInRoom = (context) => Navigator.of(context).pop(),
-    );
+        appID:
+            zegoCloudAppID, // Fill in the appID that you get from ZEGOCLOUD Admin Console.
+        appSign:
+            zegoCloudAppSign, // Fill in the appSign that you get from ZEGOCLOUD Admin Console.
+        userID: userID,
+        userName: userName,
+        callID: callUID,
+        // You can also use groupVideo/groupVoice/oneOnOneVoice to make more types of calls.
+        config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
+          ..layout = ZegoLayout.gallery()
+          ..bottomMenuBarConfig = ZegoBottomMenuBarConfig(extendButtons: [
+            const ShareButton(),
+          ], buttons: [
+            ZegoMenuBarButtonName.toggleCameraButton,
+            ZegoMenuBarButtonName.toggleMicrophoneButton,
+            ZegoMenuBarButtonName.hangUpButton,
+            ZegoMenuBarButtonName.switchAudioOutputButton,
+            ZegoMenuBarButtonName.switchCameraButton,
+            ZegoMenuBarButtonName.showMemberListButton
+          ])
+          ..onOnlySelfInRoom = (context) => Navigator.of(context).pop());
   }
 }
