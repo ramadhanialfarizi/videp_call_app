@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:video_call_app/core/helpers/authHelpers.dart';
 import 'package:video_call_app/core/utils/ImagesConstants.dart';
@@ -39,8 +38,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          ImagesConstants.appIconsGift,
-          scale: 3,
+          ImagesConstants.productIcon,
+          width: 200,
+          height: 200,
         ),
       ),
     );

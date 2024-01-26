@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
             return CupertinoPageRoute(
                 builder: (_) => const HomeScreen(), settings: settings);
         }
+        return null;
       },
     );
   }
