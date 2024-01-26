@@ -70,7 +70,9 @@ class LoginScreen extends StatelessWidget {
                       VColors.redColors,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _controller.signInWithApple();
+                  },
                   icon: Image.asset(
                     ImagesConstants.appleIcon,
                     color: Colors.white,

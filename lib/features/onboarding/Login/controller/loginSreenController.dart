@@ -20,4 +20,6 @@ class LoginScreenController extends GetxController {
       Get.off(() => const HomeScreen());
     }
   }
+
+  signInWithApple() {}
 }
