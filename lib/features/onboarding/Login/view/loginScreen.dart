@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_call_app/core/global_widget/loadingScreen.dart';
 import 'package:video_call_app/core/utils/ImagesConstants.dart';
+import 'package:video_call_app/core/utils/VColors.dart';
 import 'package:video_call_app/features/onboarding/Login/controller/loginSreenController.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -19,26 +20,66 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                ImagesConstants.loginBg,
-                scale: 3,
+                ImagesConstants.productIcon,
+                width: 200,
+                height: 200,
               ),
               const SizedBox(
                 height: 15,
               ),
-              ElevatedButton.icon(
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
-                    const EdgeInsets.all(16.0),
+              Container(
+                width: double.infinity,
+                height: 50,
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: ElevatedButton.icon(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
+                      const EdgeInsets.all(16.0),
+                    ),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      VColors.redColors,
+                    ),
+                  ),
+                  onPressed: () {
+                    _controller.signInWithGoogle(context);
+                  },
+                  icon: Image.asset(
+                    ImagesConstants.googleIcon,
+                    scale: 100,
+                    color: Colors.white,
+                  ),
+                  label: const Text(
+                    "Login with Google",
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-                onPressed: () {
-                  _controller.signInWithGoogle(context);
-                },
-                icon: Image.asset(
-                  ImagesConstants.googleIcon,
-                  scale: 100,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Container(
+                width: double.infinity,
+                height: 50,
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: ElevatedButton.icon(
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
+                      const EdgeInsets.all(16.0),
+                    ),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      VColors.redColors,
+                    ),
+                  ),
+                  onPressed: () {},
+                  icon: Image.asset(
+                    ImagesConstants.appleIcon,
+                    color: Colors.white,
+                  ),
+                  label: const Text(
+                    "Login with Apple",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
-                label: const Text("Login with Google"),
               ),
             ],
           ),

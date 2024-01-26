@@ -11,6 +11,7 @@ class ImagesConstants {
   // ICONS
   static const String appIcon = '${_icons}app_icon.png';
   static const String googleIcon = '${_icons}google_icon.png';
+  static const String appleIcon = '${_icons}apple_icon.png';
   static const String productIcon = '${_icons}meet_up_icon.png';
 
   // BACKGROUND
