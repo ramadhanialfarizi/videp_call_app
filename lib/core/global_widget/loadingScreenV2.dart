@@ -8,7 +8,7 @@ class LoadingScreenv2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.withOpacity(0.7),
-      body: Center(
+      body: const Center(
         child: CircularProgressIndicator(
           color: VColors.redColors,
         ),
