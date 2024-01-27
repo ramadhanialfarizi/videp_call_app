@@ -3,10 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-    <string>We require camera access to connect</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>We require microphone access to connect</string>
-
+	<string>We require camera access to connect</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We require microphone access to connect</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -52,5 +51,14 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.723587547036-n93h612gqfm3o0f8b9st8sh4phhahi84</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

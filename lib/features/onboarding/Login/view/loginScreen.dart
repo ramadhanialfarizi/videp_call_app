@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_call_app/core/global_widget/loadingScreen.dart';
+import 'package:video_call_app/core/global_widget/loadingScreenV2.dart';
 import 'package:video_call_app/core/utils/ImagesConstants.dart';
 import 'package:video_call_app/core/utils/VColors.dart';
 import 'package:video_call_app/features/onboarding/Login/controller/loginSreenController.dart';
@@ -88,7 +89,7 @@ class LoginScreen extends StatelessWidget {
         ),
         Obx(
           () => _controller.isLoading.value
-              ? const LoadingScreen()
+              ? const LoadingScreenv2()
               : const SizedBox(),
         ),
       ],

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_call_app/core/helpers/authHelpers.dart';
@@ -7,17 +9,25 @@ class LoginScreenController extends GetxController {
   RxBool isLoading = false.obs;
 
   signInWithGoogle(context) async {
+    isLoading.value = true;
     final googleSignInStatus = await AuthHelpers().signInGoogle();
 
-    if (googleSignInStatus == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("login fail"),
-          duration: Duration(milliseconds: 800),
-        ),
-      );
-    } else {
-      Get.off(() => const HomeScreen());
+    try {
+      if (googleSignInStatus == null) {
+        isLoading.value = false;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("login fail"),
+            duration: Duration(milliseconds: 800),
+          ),
+        );
+      } else {
+        isLoading.value = false;
+        Get.off(() => const HomeScreen());
+      }
+    } catch (e) {
+      log("error : ${e.toString()}");
+      isLoading.value = false;
     }
   }
 
