@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:video_call_app/core/global_widget/loadingScreenV2.dart';
+import 'package:video_call_app/core/global_widget/Loading/loadingScreenV2.dart';
 import 'package:video_call_app/core/utils/VColors.dart';
 import 'package:video_call_app/features/home/controller/MeetWidgetController.dart';
 

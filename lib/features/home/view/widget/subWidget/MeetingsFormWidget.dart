@@ -3,11 +3,16 @@ import 'package:video_call_app/core/utils/VColors.dart';
 
 class MeetingForm extends StatelessWidget {
   final VoidCallback onPressed;
+  final Function(String value)? onTyping;
+  final bool? showErrorMessage;
   final TextEditingController textEditingController;
-  const MeetingForm(
-      {super.key,
-      required this.onPressed,
-      required this.textEditingController});
+  const MeetingForm({
+    super.key,
+    required this.onPressed,
+    required this.textEditingController,
+    this.showErrorMessage = false,
+    this.onTyping,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,30 +36,38 @@ class MeetingForm extends StatelessWidget {
           ),
           TextFormField(
             controller: textEditingController,
+            onChanged: onTyping ?? (value) {},
             decoration: InputDecoration(
               hintText: 'Input code',
               filled: true,
               fillColor: Colors.grey[200],
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(15),
                 borderSide: const BorderSide(
                   color: VColors.redColors,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(15),
                 borderSide: const BorderSide(
                   color: VColors.redColors,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(15),
                 borderSide: const BorderSide(
                   color: VColors.redColors,
                 ),
               ),
-              // prefixIconColor: VColors.redColors,
-              // prefixIcon: const Icon(Icons.email),
+            ),
+          ),
+          Visibility(
+            visible: showErrorMessage ?? false,
+            child: const Text(
+              "Please input meeting code",
+              style: TextStyle(
+                color: VColors.redColors,
+              ),
             ),
           ),
           const SizedBox(

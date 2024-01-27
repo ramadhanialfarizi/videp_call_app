@@ -23,7 +23,7 @@ class AuthHelpers {
       }
     } on FirebaseAuthException catch (e) {
       log("eror-log : $e");
-      return null;
+      return e;
     }
   }
 
