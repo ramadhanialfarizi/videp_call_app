@@ -12,8 +12,4 @@ class Constant {
 
     return screenFullHeight;
   }
-
-  // static double textScalling(context) {
-  //   double textScale = MediaQuery.of(context).textScaler.
-  // }
 }

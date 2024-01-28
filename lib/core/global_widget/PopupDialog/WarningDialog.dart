@@ -6,9 +6,14 @@ import 'package:video_call_app/core/utils/VColors.dart';
 
 class WarningDialog extends StatelessWidget {
   final String? message;
+  final String? activeButtonText;
+
+  final List<Widget>? customAction;
   const WarningDialog({
     super.key,
     this.message = "is not support",
+    this.activeButtonText,
+    this.customAction,
   });
 
   @override
@@ -30,26 +35,27 @@ class WarningDialog extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
       actionsAlignment: MainAxisAlignment.center,
-      actions: [
-        ElevatedButton(
-          onPressed: () {
-            Get.back();
-          },
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
-              VColors.redColors,
+      actions: customAction ??
+          [
+            ElevatedButton(
+              onPressed: () {
+                Get.back();
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  VColors.redColors,
+                ),
+              ),
+              child: Text(
+                activeButtonText ?? "ok",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
-          ),
-          child: const Text(
-            "ok",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        )
-      ],
+          ],
     );
   }
 }

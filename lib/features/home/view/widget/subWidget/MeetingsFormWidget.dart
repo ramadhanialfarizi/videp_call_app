@@ -1,42 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:video_call_app/core/utils/Constant.dart';
 import 'package:video_call_app/core/utils/VColors.dart';
+import 'package:video_call_app/features/home/controller/subController/MeetingsFormWidgetController.dart';
 
 class MeetingForm extends StatelessWidget {
-  final VoidCallback onPressed;
-  final Function(String value)? onTyping;
-  final bool? showErrorMessage;
-  final TextEditingController textEditingController;
+  final Function(String value) getInputCode;
   const MeetingForm({
     super.key,
-    required this.onPressed,
-    required this.textEditingController,
-    this.showErrorMessage = false,
-    this.onTyping,
+    required this.getInputCode,
   });
 
   @override
   Widget build(BuildContext context) {
+    var _controller = Get.put(MeetingFormWidgetController(
+      getInputCode: (value) {
+        getInputCode(value);
+      },
+    ));
     return Container(
       width: double.infinity,
-      height: 250,
+      height: Constant.getFullHeight(context) * 0.3,
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Input Meeting Code',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: VColors.redColors,
-            ),
+          Row(
+            children: [
+              const Expanded(
+                child: Text(
+                  'Input Meeting Code',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: VColors.redColors,
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Get.close(1);
+                },
+                icon: const Icon(
+                  Icons.close,
+                ),
+              )
+            ],
           ),
           const SizedBox(
             height: 20,
           ),
           TextFormField(
-            controller: textEditingController,
-            onChanged: onTyping ?? (value) {},
+            controller: _controller.inputCodeController,
+            onChanged: (value) => _controller.onTyping(),
             decoration: InputDecoration(
               hintText: 'Input code',
               filled: true,
@@ -61,12 +77,14 @@ class MeetingForm extends StatelessWidget {
               ),
             ),
           ),
-          Visibility(
-            visible: showErrorMessage ?? false,
-            child: const Text(
-              "Please input meeting code",
-              style: TextStyle(
-                color: VColors.redColors,
+          Obx(
+            () => Visibility(
+              visible: _controller.showErrorMessage.value,
+              child: const Text(
+                "Please input meeting code",
+                style: TextStyle(
+                  color: VColors.redColors,
+                ),
               ),
             ),
           ),
@@ -74,24 +92,31 @@ class MeetingForm extends StatelessWidget {
             height: 20,
           ),
           SizedBox(
-            height: 50,
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: onPressed,
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  VColors.redColors,
+              height: 50,
+              width: double.infinity,
+              child: Obx(
+                () => ElevatedButton(
+                  onPressed: _controller.isDisableButton.value
+                      ? () {}
+                      : () {
+                          _controller.onPressed();
+                        },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      _controller.isDisableButton.value
+                          ? VColors.redColorsDisable
+                          : VColors.redColors,
+                    ),
+                  ),
+                  child: const Text(
+                    "Join Meetings",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
-              ),
-              child: const Text(
-                "Join Meetings",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ),
+              )),
         ],
       ),
     );

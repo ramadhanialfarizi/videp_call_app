@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:video_call_app/core/global_widget/PopupDialog/WarningDialog.dart';
 import 'package:video_call_app/core/helpers/authHelpers.dart';
 import 'package:video_call_app/core/utils/ImagesConstants.dart';
 import 'package:video_call_app/core/utils/VColors.dart';
@@ -61,8 +62,49 @@ class Sidebar extends StatelessWidget {
                   ),
                 ),
                 onPressed: () async {
-                  await authHelpers.signOut();
-                  Get.offAll(() => const LoginScreen());
+                  Get.dialog(
+                    WarningDialog(
+                      message: "Are you sure want to logout?",
+                      activeButtonText: "back",
+                      customAction: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              VColors.redColors,
+                            ),
+                          ),
+                          child: const Text(
+                            "back",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            await authHelpers.signOut();
+                            Get.offAll(() => const LoginScreen());
+                          },
+                          child: const Text(
+                            "logout",
+                            style: TextStyle(
+                              color: VColors.redColors,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
                 },
               ),
             ),

@@ -1,3 +1,7 @@
+// ignore_for_file: file_names
+
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,7 +10,6 @@ import 'package:video_call_app/features/call/view/callScreen.dart';
 import 'package:video_call_app/features/home/view/widget/subWidget/MeetingsFormWidget.dart';
 
 class MeetWidgetController extends GetxController {
-  TextEditingController inputCodeController = TextEditingController();
   final AuthHelpers authHelpers = AuthHelpers();
 
   RxBool isLoading = false.obs;
@@ -19,7 +22,10 @@ class MeetWidgetController extends GetxController {
 
     isLoading.value = false;
 
-    String roomId = "meetup-meetings/";
+    int idRoom = randomIdRoom(1, 30);
+
+    String roomId = "meetup-meetings-idRoom-$idRoom";
+
     Get.to(
       () => CallScreen(
         callUID: roomId,
@@ -30,46 +36,30 @@ class MeetWidgetController extends GetxController {
   }
 
   joinToMeeting(context) {
-    showModalBottomSheet(
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-        top: Radius.circular(20),
-      )),
-      context: context,
-      builder: (context) => Obx(
-        () => MeetingForm(
-          showErrorMessage: showErrorMessage.value,
-          textEditingController: inputCodeController,
-          onTyping: (value) {
-            if (inputCodeController.text.isEmpty) {
-              showErrorMessage.value = true;
-            } else {
-              showErrorMessage.value = false;
-            }
-          },
-          onPressed: () async {
-            if (inputCodeController.text.isNotEmpty) {
-              showErrorMessage.value = false;
-              Get.back();
-              isLoading.value = true;
-
-              await checkInputCode();
-              isLoading.value = false;
-            } else {
-              showErrorMessage.value = true;
-            }
-          },
-        ),
+    Get.bottomSheet(
+      backgroundColor: Colors.white,
+      MeetingForm(
+        getInputCode: (code) async {
+          Get.back();
+          isLoading.value = true;
+          await checkInputCode(code);
+          isLoading.value = false;
+        },
       ),
     );
   }
 
-  checkInputCode() async {
+  randomIdRoom(int min, int max) {
+    final random = Random();
+    return min + random.nextInt(max - min + 1);
+  }
+
+  checkInputCode(String roomCode) async {
     await Future.delayed(const Duration(milliseconds: 500));
 
     Get.to(
       () => CallScreen(
-        callUID: inputCodeController.text,
+        callUID: roomCode,
         userID: authHelpers.userLogin.currentUser?.uid ?? "",
         userName: authHelpers.userLogin.currentUser?.email ?? "",
       ),

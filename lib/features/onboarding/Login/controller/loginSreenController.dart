@@ -35,17 +35,15 @@ class LoginScreenController extends GetxController {
 
   signInWithApple(context) {
     if (Platform.isIOS) {
-      showDialog(
-        context: context,
-        builder: (context) => const WarningDialog(
+      Get.dialog(
+        const WarningDialog(
           message: "This features is unavailable now",
         ),
       );
     } else {
-      showDialog(
-        context: context,
-        builder: (context) => const WarningDialog(
-          message: "This features not support for your device",
+      Get.dialog(
+        const WarningDialog(
+          message: "This features is unavailable now",
         ),
       );
     }
