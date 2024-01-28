@@ -3,6 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:video_call_app/core/global_widget/Loading/loadingScreenV2.dart';
+import 'package:video_call_app/core/utils/ImagesConstants.dart';
 import 'package:video_call_app/core/utils/VColors.dart';
 import 'package:video_call_app/features/home/controller/MeetWidgetController.dart';
 
@@ -51,6 +52,16 @@ class MeetWidget extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 80.0, bottom: 30),
+                child: Image.asset(
+                  ImagesConstants.emptyData,
+                ),
+              ),
+              const Text(
+                "you don't have any meeting for now",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               )
             ],
           ),

@@ -15,7 +15,7 @@ class LoginScreenController extends GetxController {
     final googleSignInStatus = await AuthHelpers().signInGoogle();
 
     try {
-      if (googleSignInStatus == 'accessToken != null || idToken != null') {
+      if (googleSignInStatus == null) {
         isLoading.value = false;
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(

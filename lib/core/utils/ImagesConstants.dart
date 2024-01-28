@@ -4,6 +4,7 @@ class ImagesConstants {
   static const String _gift = 'assets/gift/';
   static const String _icons = 'assets/icons/';
   static const String _background = 'assets/background/';
+  static const String _illustration = 'assets/illustration/';
 
   // GIFT
   static const String appIconsGift = '${_gift}app_logo.gif';
@@ -18,4 +19,7 @@ class ImagesConstants {
   // BACKGROUND
   static const String loginBg = '${_background}login_bg.png';
   static const String sidebarBg = '${_background}side_bar_bg.png';
+
+  // ILUSTRATION
+  static const String emptyData = '${_illustration}empty_illustration.png';
 }
