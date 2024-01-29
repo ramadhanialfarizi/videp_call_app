@@ -1,6 +1,6 @@
-import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:video_call_app/core/utils/LogUtility.dart';
 
 class AuthHelpers {
   final userLogin = FirebaseAuth.instance;
@@ -22,7 +22,7 @@ class AuthHelpers {
         return await FirebaseAuth.instance.signInWithCredential(credential);
       }
     } on FirebaseAuthException catch (e) {
-      log("eror-log : $e");
+      LogUtility.writeLog(e);
       return null;
     }
   }
