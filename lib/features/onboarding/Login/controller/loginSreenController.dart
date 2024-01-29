@@ -25,7 +25,7 @@ class LoginScreenController extends GetxController {
         );
       } else {
         isLoading.value = false;
-        Get.off(() => const HomeScreen());
+        Get.offAll(() => const HomeScreen());
       }
     } catch (e) {
       log("error : ${e.toString()}");
@@ -43,7 +43,7 @@ class LoginScreenController extends GetxController {
     } else {
       Get.dialog(
         const WarningDialog(
-          message: "This features is unavailable now",
+          message: "This features is not support for your device",
         ),
       );
     }

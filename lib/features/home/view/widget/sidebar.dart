@@ -4,10 +4,13 @@ import 'package:video_call_app/core/global_widget/PopupDialog/WarningDialog.dart
 import 'package:video_call_app/core/helpers/authHelpers.dart';
 import 'package:video_call_app/core/utils/ImagesConstants.dart';
 import 'package:video_call_app/core/utils/VColors.dart';
-import 'package:video_call_app/features/onboarding/Login/view/loginScreen.dart';
 
 class Sidebar extends StatelessWidget {
-  const Sidebar({super.key});
+  final VoidCallback onLogoutPressed;
+  const Sidebar({
+    super.key,
+    required this.onLogoutPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +92,7 @@ class Sidebar extends StatelessWidget {
                           width: 5,
                         ),
                         ElevatedButton(
-                          onPressed: () async {
-                            await authHelpers.signOut();
-                            Get.offAll(() => const LoginScreen());
-                          },
+                          onPressed: onLogoutPressed,
                           child: const Text(
                             "logout",
                             style: TextStyle(
