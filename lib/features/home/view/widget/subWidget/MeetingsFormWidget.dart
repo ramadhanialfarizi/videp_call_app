@@ -20,7 +20,7 @@ class MeetingForm extends StatelessWidget {
     ));
     return Container(
       width: double.infinity,
-      height: Constant.getFullHeight(context) * 0.3,
+      height: Constant.getFullHeight(context) * 0.4,
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
