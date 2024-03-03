@@ -5,12 +5,12 @@ class ShareButton extends StatelessWidget {
     super.key,
     this.height,
     this.width,
-    this.onTap,
+    this.onShareTap,
   });
 
   final double? height;
   final double? width;
-  final dynamic onTap;
+  final VoidCallback? onShareTap;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ShareButton extends StatelessWidget {
       height: height,
       width: width,
       child: IconButton(
-        onPressed: onTap,
+        onPressed: onShareTap,
         icon: const Icon(
           Icons.share,
           color: Colors.white,

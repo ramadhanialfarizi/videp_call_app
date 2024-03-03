@@ -20,103 +20,112 @@ class MeetingForm extends StatelessWidget {
     ));
     return Container(
       width: double.infinity,
-      height: Constant.getFullHeight(context) * 0.4,
+      height: Constant.getFullHeight(context) * 0.35,
       padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Expanded(
-                child: Text(
-                  'Input Meeting Code',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: VColors.redColors,
+              Row(
+                children: [
+                  const Expanded(
+                    child: Text(
+                      'Input Meeting Code',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: VColors.redColors,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Get.close(1);
+                    },
+                    icon: const Icon(
+                      Icons.close,
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                controller: _controller.inputCodeController,
+                onChanged: (value) => _controller.onTyping(),
+                decoration: InputDecoration(
+                  hintText: 'Input code',
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(
+                      color: VColors.redColors,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(
+                      color: VColors.redColors,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(
+                      color: VColors.redColors,
+                    ),
                   ),
                 ),
               ),
-              IconButton(
-                onPressed: () {
-                  Get.close(1);
-                },
-                icon: const Icon(
-                  Icons.close,
+              Obx(
+                () => Visibility(
+                  visible: _controller.showErrorMessage.value,
+                  child: const Text(
+                    "Please input meeting code",
+                    style: TextStyle(
+                      color: VColors.redColors,
+                    ),
+                  ),
                 ),
-              )
+              ),
             ],
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-            controller: _controller.inputCodeController,
-            onChanged: (value) => _controller.onTyping(),
-            decoration: InputDecoration(
-              hintText: 'Input code',
-              filled: true,
-              fillColor: Colors.grey[200],
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(
-                  color: VColors.redColors,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(
-                  color: VColors.redColors,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(
-                  color: VColors.redColors,
-                ),
-              ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: Obx(
+                    () => ElevatedButton(
+                      onPressed: _controller.isDisableButton.value
+                          ? () {}
+                          : () {
+                              _controller.onPressed();
+                            },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          _controller.isDisableButton.value
+                              ? VColors.redColorsDisable
+                              : VColors.redColors,
+                        ),
+                      ),
+                      child: const Text(
+                        "Join Meetings",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  )),
             ),
           ),
-          Obx(
-            () => Visibility(
-              visible: _controller.showErrorMessage.value,
-              child: const Text(
-                "Please input meeting code",
-                style: TextStyle(
-                  color: VColors.redColors,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: Obx(
-                () => ElevatedButton(
-                  onPressed: _controller.isDisableButton.value
-                      ? () {}
-                      : () {
-                          _controller.onPressed();
-                        },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      _controller.isDisableButton.value
-                          ? VColors.redColorsDisable
-                          : VColors.redColors,
-                    ),
-                  ),
-                  child: const Text(
-                    "Join Meetings",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              )),
         ],
       ),
     );

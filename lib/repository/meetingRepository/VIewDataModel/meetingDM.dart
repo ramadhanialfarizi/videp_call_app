@@ -1,7 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class MeetingDM {
-  String? idRoom;
+  DocumentReference<Object?>? addMeetingRoom;
+  bool? isError;
+  String? errorMessage;
 
   MeetingDM({
-    this.idRoom,
+    this.addMeetingRoom,
+    this.isError,
+    this.errorMessage,
   });
 }
