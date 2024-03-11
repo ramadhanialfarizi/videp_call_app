@@ -1,10 +1,8 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_call_app/core/global_widget/PopupDialog/WarningDialog.dart';
-import 'package:video_call_app/core/helpers/authHelpers.dart';
 import 'package:video_call_app/features/home/view/homescreen.dart';
 import 'package:video_call_app/repository/onBoardingRepository/ViewDataModel/onBoardingDM.dart';
 import 'package:video_call_app/repository/onBoardingRepository/onBoardingRepository.dart';
