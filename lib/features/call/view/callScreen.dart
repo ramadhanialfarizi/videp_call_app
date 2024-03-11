@@ -1,5 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:video_call_app/features/call/controller/callScreenController.dart';
 import 'package:video_call_app/features/call/view/widget/share_button.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import '../../../core/utils/env.dart';
@@ -16,6 +18,7 @@ class CallScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _controller = Get.put(CallScreenController());
     return ZegoUIKitPrebuiltCall(
         appID:
             zegoCloudAppID, // Fill in the appID that you get from ZEGOCLOUD Admin Console.
@@ -28,7 +31,9 @@ class CallScreen extends StatelessWidget {
         config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
           ..layout = ZegoLayout.gallery()
           ..bottomMenuBarConfig = ZegoBottomMenuBarConfig(extendButtons: [
-            const ShareButton(),
+            ShareButton(
+              onShareTap: () => _controller.shareMeetingRoom(callUID),
+            ),
           ], buttons: [
             ZegoMenuBarButtonName.toggleCameraButton,
             ZegoMenuBarButtonName.toggleMicrophoneButton,

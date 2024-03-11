@@ -53,7 +53,7 @@ class MeetWidgetController extends GetxController {
   joinToMeeting(context) {
     Get.bottomSheet(
       backgroundColor: Colors.white,
-      MeetingForm(
+      MeetingFormWidget(
         getInputCode: (code) async {
           Get.back();
           await checkInputCode(code);

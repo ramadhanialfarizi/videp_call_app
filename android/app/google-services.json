@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "723587547036-mrcth7nsjesjor1p2mm6kpcvemjl5tlp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.video_call_app",
+            "certificate_hash": "cbab87ade1b3b355c38a6f9a73ea29e495f8b950"
+          }
+        },
+        {
           "client_id": "723587547036-tf65dbdglklpotr46c7g5lgv0lpg7ab0.apps.googleusercontent.com",
           "client_type": 3
         }

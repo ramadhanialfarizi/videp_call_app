@@ -4,9 +4,9 @@ import 'package:video_call_app/core/utils/Constant.dart';
 import 'package:video_call_app/core/utils/VColors.dart';
 import 'package:video_call_app/features/home/controller/subController/MeetingsFormWidgetController.dart';
 
-class MeetingForm extends StatelessWidget {
+class MeetingFormWidget extends StatelessWidget {
   final Function(String value) getInputCode;
-  const MeetingForm({
+  const MeetingFormWidget({
     super.key,
     required this.getInputCode,
   });
@@ -97,7 +97,7 @@ class MeetingForm extends StatelessWidget {
             left: 0,
             right: 0,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 30.0),
+              padding: const EdgeInsets.only(bottom: 20.0),
               child: SizedBox(
                   height: 50,
                   width: double.infinity,

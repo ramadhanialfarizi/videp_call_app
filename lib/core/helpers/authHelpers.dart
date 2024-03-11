@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:video_call_app/core/utils/LogUtility.dart';
+import 'package:video_call_app/repository/onBoardingRepository/Response/onBoardingResponse.dart';
 
 class AuthHelpers {
   final userLogin = FirebaseAuth.instance;
   final FirebaseAuth _authentication = FirebaseAuth.instance;
 
-  Future signInGoogle() async {
+  Future<OnBoardingResponse> signInGoogle() async {
+    OnBoardingResponse onBoardingResponse = OnBoardingResponse();
     try {
       if (_authentication.currentUser == null) {
         final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -19,11 +21,24 @@ class AuthHelpers {
           idToken: googleAuth?.idToken,
         );
 
-        return await FirebaseAuth.instance.signInWithCredential(credential);
+        onBoardingResponse.userData =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+        onBoardingResponse.isError = false;
+        onBoardingResponse.errorMessage = "";
+
+        return onBoardingResponse;
+      } else {
+        return OnBoardingResponse(
+          errorMessage: "User already registered",
+          isError: false,
+        );
       }
     } on FirebaseAuthException catch (e) {
       LogUtility.writeLog(e);
-      return null;
+
+      onBoardingResponse.errorMessage = e.toString();
+      onBoardingResponse.isError = true;
+      return onBoardingResponse;
     }
   }
 
